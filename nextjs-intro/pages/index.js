@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import Seo from "../components/Seo";
 
@@ -8,7 +9,11 @@ export default function Home({ results }) {
       {results?.map((movie) => (
         <div className="movie" key={movie.id}>
           <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
-          <h4>{movie.original_title}</h4>
+          <h4>
+            <Link href={`/movies/${movie.id}`} key={movie.id}>
+              {movie.original_title}{" "}
+            </Link>
+          </h4>
         </div>
       ))}
       <style jsx>{`
