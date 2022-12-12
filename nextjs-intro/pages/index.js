@@ -11,15 +11,7 @@ export default function Home({ results }) {
   //2.router.push, (유저가 form제출하고 난 뒤 자동으로 이동하게끔 하는 )
   const onClick = (id, title) => {
     //as는 브라우저의 url을 마스킹한다.
-    router.push(
-      {
-        pathname: `/movies/${id}`,
-        query: {
-          title,
-        },
-      },
-      `/movies/${id}`
-    );
+    router.push(`/movies/${title}/${id}`);
   };
   return (
     <div className="container">
@@ -32,7 +24,7 @@ export default function Home({ results }) {
         >
           <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
           <h4>
-            <Link href={`/movies/${movie.id}`} key={movie.id}>
+            <Link href={`/movies/${movie.original_title}/${movie.id}`} key={movie.id}>
               {movie.original_title}{" "}
             </Link>
           </h4>
