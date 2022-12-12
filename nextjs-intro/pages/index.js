@@ -1,13 +1,35 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Seo from "../components/Seo";
 
 export default function Home({ results }) {
+  const router = useRouter();
+
+  //라우팅하는 방법
+  //1.Link 사용하기
+  //2.router.push, (유저가 form제출하고 난 뒤 자동으로 이동하게끔 하는 )
+  const onClick = (id, title) => {
+    //as는 브라우저의 url을 마스킹한다.
+    router.push(
+      {
+        pathname: `/movies/${id}`,
+        query: {
+          title,
+        },
+      },
+      `/movies/${id}`
+    );
+  };
   return (
     <div className="container">
       <Seo title="Home" />
       {results?.map((movie) => (
-        <div className="movie" key={movie.id}>
+        <div
+          className="movie"
+          key={movie.id}
+          onClick={() => onClick(movie.id, movie.original_title)}
+        >
           <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
           <h4>
             <Link href={`/movies/${movie.id}`} key={movie.id}>
