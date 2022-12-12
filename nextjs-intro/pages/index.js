@@ -18,6 +18,9 @@ export default function Home({ results }) {
           padding: 20px;
           gap: 20px;
         }
+        .movie {
+          cursor: pointer;
+        }
         .movie img {
           max-width: 100%;
           border-radius: 12px;
@@ -39,7 +42,6 @@ export default function Home({ results }) {
 //index 페이지 가지고 있는것 아니라, / 페이지로 이동
 //jsx, import React 없이 jsx 요소 사용가능
 //nextjs -> 앱에 있는 페이지들 미리 렌더링 됨 (정적으로 생성됨)
-// seo시 사용함
 export async function getServerSideProps() {
   //여기에 작성한 코드는 client가 아니라 server쪽에서만 작동함
   //api키 여기 작성하면 client에게 보여지지 않을것
