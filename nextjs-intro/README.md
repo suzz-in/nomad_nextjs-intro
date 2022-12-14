@@ -47,7 +47,9 @@ npm run dev
 - 라이브러리 없이 Link 사용, CSR 가능
 - `href` 에 객체 전달하면 pathname과 query 지정가능
 
-* ````<Link
+* 
+```` javascript
+<Link
     href={{
      pathname: `/movies/${movie.id}`,
   	 query: {
@@ -55,7 +57,7 @@ npm run dev
   	 },
     }}
   	as={`/movies/${movie.id}`}
-  >```
+  >
   ````
 * as는 브라우저의 url을 마스킹한다.
 
@@ -69,22 +71,22 @@ npm run dev
 
 - onClick 시 url 변경하도록 push 함수 호출
 
-```
-	const router = useRouter();
+``` javascript
+ const router = useRouter();
  const onClick = (id) => {
    router.push(`/movies/${id}`);
  };
 
 // ...
 
-		<div onClick={() => onClick(movie.id)} className="movie" key={movie.id}>
+<div onClick={() => onClick(movie.id)} className="movie" key={movie.id}>
 				// ...
 ```
 
 - query 부분을 as를 사용해 숨길 수 있음
 
-```
-	const router = useRouter();
+``` javascript
+ const router = useRouter();
   const onClick = (id) => {
     router.push(
       {
@@ -105,7 +107,7 @@ npm run dev
 
 - `layout` 과 같이 모든 페이지에서 공통으로 사용하는 컴포넌트 등을 `_app.js` 파일에서 한 번에 적용 가능
 
-```
+``` javascript
 export default function App({ Component, pageProps }) {
  return (
    <div>
@@ -129,7 +131,7 @@ export default function App({ Component, pageProps }) {
 
 ### Redirect
 
-```
+``` javascript
 async redirects() {
    return [
      {
@@ -150,7 +152,7 @@ async redirects() {
 - API KEY 숨기기 가능
 - 유저 리다이렉트 하지만 url 변경 x
 
-```
+``` javascript
 //rewirtes는 유저를 redirect시키지만 url은 변하지 않음 !
   //유저에게 url 변화 보여주지 않음 -> api키 숨기기 가능
   async rewrites() {
@@ -172,7 +174,7 @@ async redirects() {
 
 ## Server Side Rendering
 
-```
+``` javascript
 export default function Detail({ params }) {
   const router = useRouter();
   const [title, id] = params || [];
